@@ -30,7 +30,4 @@ public class TransacaoController {
     public void deletarTransacoes() {
         transacaoService.deletarTransacoes();
     }
-
-
-
 }
