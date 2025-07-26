@@ -28,4 +28,8 @@ public class TransacaoService {
         transacoes.clear();
         System.out.println("Todas as transações foram deletadas.");
     }
+
+    public List<Transacao> getTransacoes() {
+        return transacoes;
+    }
 }
