@@ -25,6 +25,12 @@ public class GlobalExceptionHandler {
         logger.warn(ex.getMessage());
     }
 
+    @ExceptionHandler(DataHoraInvalidaException.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    public void handleDataHoraInvalidaException(DataHoraInvalidaException ex) {
+        logger.warn(ex.getMessage());
+    }
+
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public void handleJsonInvalido() {
