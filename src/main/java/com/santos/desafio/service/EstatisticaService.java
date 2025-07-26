@@ -4,6 +4,7 @@ import java.time.OffsetDateTime;
 import java.util.DoubleSummaryStatistics;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.santos.desafio.domain.Transacao;
@@ -15,8 +16,11 @@ public class EstatisticaService {
     @Autowired
     private TransacaoService transacaoService;
 
+    @Value("${estatistica.periodo.segundos:60}")
+    private int periodoSegundos;
+
     public EstatisticaResponse consultarEstatisticas() {
-        OffsetDateTime limite = OffsetDateTime.now().minusSeconds(60);
+        OffsetDateTime limite = OffsetDateTime.now().minusSeconds(periodoSegundos);
 
         DoubleSummaryStatistics statistics = transacaoService.getTransacoes().stream()
                 .filter(transacao -> !transacao.getDataHora().isBefore(limite))
