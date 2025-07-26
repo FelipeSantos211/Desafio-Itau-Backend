@@ -3,6 +3,8 @@ package com.santos.desafio.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import com.santos.desafio.validation.Validar;
 @Service
 public class TransacaoService {
 
+    private static final Logger logger = LoggerFactory.getLogger(TransacaoService.class);
+
     private List<Transacao> transacoes = new ArrayList<>();
 
     @Autowired
@@ -21,12 +25,12 @@ public class TransacaoService {
     public void criarTransacao(TransacaoRequest request) {
         validadores.forEach(validador -> validador.validar(request));
         transacoes.add(new Transacao(request.valor(), request.dataHora()));
-        System.out.println(transacoes.size() + " transações registradas.");
+        logger.info("{} transações registradas.", transacoes.size());
     }
 
     public void deletarTransacoes() {
         transacoes.clear();
-        System.out.println("Todas as transações foram deletadas.");
+        logger.info("Todas as transações foram deletadas.");
     }
 
     public List<Transacao> getTransacoes() {
