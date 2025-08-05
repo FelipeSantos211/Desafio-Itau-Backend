@@ -20,7 +20,7 @@ public class TransacaoService {
     private List<Transacao> transacoes = new ArrayList<>();
 
     @Autowired
-    private List<Validar> validadores;
+    private List<Validar<TransacaoRequest>> validadores;
 
     public void criarTransacao(TransacaoRequest request) {
         validadores.forEach(validador -> validador.validar(request));
