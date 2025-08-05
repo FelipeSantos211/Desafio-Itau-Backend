@@ -9,7 +9,7 @@ import com.santos.desafio.exception.DataHoraInvalidaException;
 import com.santos.desafio.validation.Validar;
 
 @Component
-public class ValidaDataHoraImpl implements Validar{
+public class ValidaDataHoraImpl implements Validar<TransacaoRequest> {
 
     @Override
     public void validar(TransacaoRequest request) {

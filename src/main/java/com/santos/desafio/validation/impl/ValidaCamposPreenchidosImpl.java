@@ -7,7 +7,7 @@ import com.santos.desafio.exception.CamposInvalidosException;
 import com.santos.desafio.validation.Validar;
 
 @Component
-public class ValidaCamposPreenchidosImpl implements Validar{
+public class ValidaCamposPreenchidosImpl implements Validar<TransacaoRequest> {
 
     @Override
     public void validar(TransacaoRequest request) {

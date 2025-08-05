@@ -7,7 +7,7 @@ import com.santos.desafio.exception.ValorInvalidoException;
 import com.santos.desafio.validation.Validar;
 
 @Component
-public class ValidaValorImpl implements Validar {
+public class ValidaValorImpl implements Validar<TransacaoRequest> {
 
     @Override
     public void validar(TransacaoRequest request) {
